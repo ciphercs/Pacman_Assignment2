@@ -44,13 +44,13 @@ public class PacManGameGridAdapter extends src.PacManGameGrid
     if (c == 'h')
       return 2;
     if (c == 'i')
-      return 2;
+      return 5;
     if (c == 'j')
-      return 2;
+      return 6;
     if (c == 'k')
-      return 2;
+      return 7;
     if (c == 'l')
-      return 2;
+      return 8;
     if (c == 'd') // gold
       return 3;
     if (c == 'e') // ice

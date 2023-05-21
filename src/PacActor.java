@@ -223,6 +223,10 @@ public class PacActor extends Actor implements GGKeyRepeatListener
       getBackground().fillCell(location, Color.lightGray);
       game.getGameCallback().pacManEatPillsAndItems(location, "ice");
       game.removeItem("ice",location);
+    } else if (c.equals(Color.gray)){
+      //TODO gray, orange, pink, darkgray
+      System.out.println(getLocation());
+
     }
     String title = "[PacMan in the Multiverse] Current score: " + score;
     gameGrid.setTitle(title);

@@ -49,8 +49,7 @@ public class Controller implements ActionListener, GUIInformation {
 	 */
 	public Controller() {
 		init(Constants.MAP_WIDTH, Constants.MAP_HEIGHT);
-		File map = new File("sample_map1.xml");
-		openFile(map);
+
 	}
 
 	public void init(int width, int height) {

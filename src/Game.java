@@ -136,6 +136,29 @@ public class Game extends GameGrid
     addActor(tx5, new Location(tx5X, tx5Y), Location.NORTH);
   }
 
+  private void putPortal(GGBackground bg, Location location, String color){
+    Actor portal = new Actor();
+    switch(color){
+      case "white":
+        bg.setPaintColor(Color.gray);
+        portal = new Actor("data/i_portalWhiteTile.png");
+        break;
+      case "yellow":
+        bg.setPaintColor(Color.orange);
+        portal = new Actor("data/j_portalYellowTile.png");
+        break;
+      case "darkGold":
+        bg.setPaintColor(Color.pink);
+        portal = new Actor("data/k_portalDarkGoldTile.png");
+        break;
+      case "darkGray":
+        bg.setPaintColor(Color.darkGray);
+        portal = new Actor("data/l_portalDarkGrayTile.png");
+        break;
+    }
+    addActor(portal, location);
+  }
+
   private int countPillsAndItems() {
     int pillsAndItemsCount = 0;
     for (int y = 0; y < nbVertCells; y++)
@@ -237,6 +260,14 @@ public class Game extends GameGrid
           putGold(bg, location);
         } else if (a == 4) {
           putIce(bg, location);
+        } else if (a == 5) {
+          putPortal(bg, location, "white");
+        } else if (a == 6) {
+          putPortal(bg, location, "yellow");
+        } else if (a == 7) {
+          putPortal(bg, location, "darkGold");
+        } else if (a == 8) {
+          putPortal(bg, location, "darkGray");
         }
       }
     }
