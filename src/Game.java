@@ -29,6 +29,10 @@ public class Game extends GameGrid
   private int seed = 30006;
   private ArrayList<Location> propertyPillLocations = new ArrayList<>();
   private ArrayList<Location> propertyGoldLocations = new ArrayList<>();
+  private ArrayList<Location> whitePortalLocations = new ArrayList<>();
+  private ArrayList<Location> yellowPortalLocations = new ArrayList<>();
+  private ArrayList<Location> darkGoldPortalLocations = new ArrayList<>();
+  private ArrayList<Location> darkGrayPortalLocations = new ArrayList<>();
 
   public Game(GameCallback gameCallback, Properties properties, String mapString)
   {
@@ -140,19 +144,23 @@ public class Game extends GameGrid
     Actor portal = new Actor();
     switch(color){
       case "white":
-        bg.setPaintColor(Color.gray);
+        bg.setPaintColor(Color.red);
+        bg.fillCircle(toPoint(location), 5);
         portal = new Actor("data/i_portalWhiteTile.png");
         break;
       case "yellow":
         bg.setPaintColor(Color.orange);
+        bg.fillCircle(toPoint(location), 5);
         portal = new Actor("data/j_portalYellowTile.png");
         break;
       case "darkGold":
         bg.setPaintColor(Color.pink);
+        bg.fillCircle(toPoint(location), 5);
         portal = new Actor("data/k_portalDarkGoldTile.png");
         break;
       case "darkGray":
         bg.setPaintColor(Color.darkGray);
+        bg.fillCircle(toPoint(location), 5);
         portal = new Actor("data/l_portalDarkGrayTile.png");
         break;
     }
@@ -189,6 +197,35 @@ public class Game extends GameGrid
     return pillAndItemLocations;
   }
 
+  public Location getPortalLocations(String portal, Location location) {
+    Location exit = new Location();
+    switch(portal){
+      case "white":
+        exit = whitePortalLocations.get(0);
+        if (whitePortalLocations.get(0).equals(location)){
+          exit = whitePortalLocations.get(1);
+        }
+        break;
+      case "yellow":
+        exit = yellowPortalLocations.get(0);
+        if (yellowPortalLocations.get(0).equals(location)){
+          exit = yellowPortalLocations.get(1);
+        }
+        break;
+      case "darkGold":
+        exit = darkGoldPortalLocations.get(0);
+        if (darkGoldPortalLocations.get(0).equals(location)){
+          exit = darkGoldPortalLocations.get(1);
+        }
+        break;
+      case "darkGray":
+        exit = darkGrayPortalLocations.get(0);
+        if (darkGrayPortalLocations.get(0).equals(location)){
+          exit = darkGrayPortalLocations.get(1);
+        }
+    }
+    return exit;
+  }
 
   private void loadPillAndItemsLocations() {
     String pillsLocationString = properties.getProperty("Pills.location");
@@ -224,6 +261,18 @@ public class Game extends GameGrid
         }
         if (a == 4) {
           pillAndItemLocations.add(location);
+        }
+        if (a == 5) {
+          whitePortalLocations.add(location);
+        }
+        if (a == 6) {
+          yellowPortalLocations.add(location);
+        }
+        if (a == 7) {
+          darkGoldPortalLocations.add(location);
+        }
+        if (a == 8) {
+          darkGrayPortalLocations.add(location);
         }
       }
     }
