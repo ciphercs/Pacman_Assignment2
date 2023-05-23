@@ -86,11 +86,12 @@ public class Controller implements ActionListener, GUIInformation {
 			updateGrid(gridWith, gridHeight);
 		} else if (e.getActionCommand().equals("start_game")) {
 			//view.close();
-			playGame("");
+			//playGame("");
 		}
 	}
 
 	public void playGame(String mapString){
+		view.close();
 		src.utility.GameCallback gameCallback = new src.utility.GameCallback();
 		final Properties properties = src.utility.PropertiesLoader.loadPropertiesFile("properties/test1.properties");
 		new src.Game(gameCallback, properties, mapString);
@@ -329,11 +330,14 @@ public class Controller implements ActionListener, GUIInformation {
 
 					String mapString = model.getMapAsString();
 					grid.redrawGrid();
-					playGame(mapString.replace("\n", ""));
 				}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String getMapString(){
+		return model.getMapAsString().replace("\n", "");
 	}
 
 	/**

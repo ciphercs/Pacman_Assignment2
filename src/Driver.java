@@ -31,6 +31,7 @@ public class Driver {
                     File[] maps = map.listFiles();
                     Controller player = new Controller();
                     player.openFile(maps[0]);
+                    player.playGame(player.getMapString());
                 }
             } else {
                 //TODO levelCheck
