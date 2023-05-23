@@ -1,8 +1,8 @@
 package src;
 
-import src.utility.GameCallback;
-import src.utility.PropertiesLoader;
+import src.utility.*;
 import matachi.mapeditor.editor.Controller;
+import game.check.*;
 
 import java.io.File;
 import java.util.Properties;
@@ -25,7 +25,14 @@ public class Driver {
         if (args.length > 0){
             File map = new File(args[0]);
             if (map.isDirectory()){
-                //TODO gameCheck
+                GameChecker gameChecker = new GameChecker(map);
+                if (!gameChecker.checkGameRules()) {
+                    new Controller();
+                } else {
+                    File[] maps = map.listFiles();
+                    Controller player = new Controller();
+                    player.openFile(maps[0]);
+                }
             } else {
                 //TODO levelCheck
                 Controller editor = new Controller();
@@ -34,6 +41,6 @@ public class Driver {
         } else {
             new Controller();
         }
-//        new src.Game(gameCallback, properties);
+//        new pacgame.Game(gameCallback, properties);
     }
 }
