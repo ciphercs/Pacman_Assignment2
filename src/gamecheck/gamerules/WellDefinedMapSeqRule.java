@@ -26,7 +26,7 @@ public class WellDefinedMapSeqRule extends GameRule {
 
         for (int chr : firstChars) {
             if (characterFound.get(chr-1) == false) {
-                characterFound.add(chr-1, true);
+                characterFound.set(chr-1, true);
             } else if (characterFound.get(chr-1) == true) {
                 // update error message
                 invalidMaps = getInvalidFiles(chr);

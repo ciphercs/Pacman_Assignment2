@@ -1,1 +1,1 @@
-Game nonDigitFirstChar - no maps found
+Game invalidNaming_duplicateNumber - multiple maps at the same level: 1map; 1mapz
