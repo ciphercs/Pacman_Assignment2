@@ -1,10 +1,10 @@
 package src;
 
+import gamecheck.GameChecker;
 import matachi.mapeditor.editor.Controller;
-import game.check.*;
+import gamecheck.*;
 
 import java.io.File;
-import java.util.Properties;
 
 public class Driver {
 //    public static final String DEFAULT_PROPERTIES_PATH = "properties/test1.properties";

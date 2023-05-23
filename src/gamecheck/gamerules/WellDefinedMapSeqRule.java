@@ -1,4 +1,4 @@
-package game.check.gamerules;
+package gamecheck.gamerules;
 
 import java.io.File;
 import java.util.ArrayList;

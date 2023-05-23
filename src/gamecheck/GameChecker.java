@@ -1,8 +1,8 @@
-package game.check;
+package gamecheck;
 
-import game.check.gamerules.GameRule;
-import game.check.gamerules.OneValidMapNameRule;
-import game.check.gamerules.WellDefinedMapSeqRule;
+import gamecheck.gamerules.GameRule;
+import gamecheck.gamerules.OneValidMapNameRule;
+import gamecheck.gamerules.WellDefinedMapSeqRule;
 
 import java.io.File;
 import java.util.ArrayList;
