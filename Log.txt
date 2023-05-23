@@ -1,14 +1,1 @@
-[PacMan] Location: 7-0. Score: 0. Pills: 0
-[Troll] Location: 8-6
-[PacMan] Location: 7-0. Score: 0. Pills: 0
-[Troll] Location: 8-5
-[PacMan] Location: 7-0. Score: 0. Pills: 0
-[Troll] Location: 8-4
-[PacMan] Location: 7-0. Score: 0. Pills: 0
-[Troll] Location: 8-3
-[PacMan] Location: 7-0. Score: 0. Pills: 0
-[Troll] Location: 9-3
-[PacMan] Location: 7-0. Score: 0. Pills: 0
-[Troll] Location: 9-4
-[PacMan] Location: 7-0. Score: 0. Pills: 0
-[Troll] Location: 8-4
+Game invalidNaming_duplicateNumber - multiple maps at the same level: 1map; 1mapz

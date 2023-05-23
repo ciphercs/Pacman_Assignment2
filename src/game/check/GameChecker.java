@@ -1,6 +1,8 @@
 package game.check;
 
-import game.check.gamerules.*;
+import game.check.gamerules.GameRule;
+import game.check.gamerules.OneValidMapNameRule;
+import game.check.gamerules.WellDefinedMapSeqRule;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -21,10 +23,15 @@ public class GameChecker {
 
         for (GameRule rule : rules) {
             if (!rule.checkRule()) {
-                // TODO: add error message to log file
+                this.generateLog(rule);
                 return false;
             }
         }
         return true;
+    }
+
+    private void generateLog(GameRule rule) {
+        src.utility.GameCallback gameCallback = new src.utility.GameCallback();
+        gameCallback.writeString(rule.getErrorMessage());
     }
 }

@@ -30,7 +30,7 @@ public class WellDefinedMapSeqRule extends GameRule {
             } else if (characterFound.get(chr-1) == true) {
                 // update error message
                 invalidMaps = getInvalidFiles(chr);
-                this.errorMessage += invalidMaps.get(0);
+                this.errorMessage += (" " + invalidMaps.get(0));
                 for (int i=1; i<invalidMaps.size(); i++) {
                     this.errorMessage += ("; " +  invalidMaps.get(i));
                 }
@@ -49,7 +49,6 @@ public class WellDefinedMapSeqRule extends GameRule {
     }
 
     private ArrayList<String> getInvalidFiles(int chr) {
-        System.out.println(chr);
         ArrayList<String> invalidMaps = new ArrayList<>();
         for (String filename : fileNames) {
             if (filename.charAt(0) == Character.forDigit(chr,10)) {

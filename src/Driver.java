@@ -1,6 +1,5 @@
 package src;
 
-import src.utility.*;
 import matachi.mapeditor.editor.Controller;
 import game.check.*;
 
