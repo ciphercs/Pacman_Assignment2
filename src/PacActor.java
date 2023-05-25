@@ -133,46 +133,52 @@ public class PacActor extends Actor implements GGKeyRepeatListener
       followPropertyMoves();
       return;
     }
-    Location closestPill = closestPillLocation();
-    double oldDirection = getDirection();
-
-    Location.CompassDirection compassDir =
-            getLocation().get4CompassDirectionTo(closestPill);
-    Location next = getLocation().getNeighbourLocation(compassDir);
+//    Location closestPill = closestPillLocation();
+//    double oldDirection = getDirection();
+//
+//    Location.CompassDirection compassDir =
+//            getLocation().get4CompassDirectionTo(closestPill);
+//    Location next = getLocation().getNeighbourLocation(compassDir);
+//    setDirection(compassDir);
+//    if (!isVisited(next) && canMove(next)) {
+//      setLocation(next);
+//    } else {
+//      // normal movement
+//      int sign = randomiser.nextDouble() < 0.5 ? 1 : -1;
+//      setDirection(oldDirection);
+//      turn(sign * 90);  // Try to turn left/right
+//      next = getNextMoveLocation();
+//      if (canMove(next)) {
+//        setLocation(next);
+//      } else {
+//        setDirection(oldDirection);
+//        next = getNextMoveLocation();
+//        if (canMove(next)) // Try to move forward
+//        {
+//          setLocation(next);
+//        } else {
+//          setDirection(oldDirection);
+//          turn(-sign * 90);  // Try to turn right/left
+//          next = getNextMoveLocation();
+//          if (canMove(next)) {
+//            setLocation(next);
+//          } else {
+//            setDirection(oldDirection);
+//            turn(180);  // Turn backward
+//            next = getNextMoveLocation();
+//            setLocation(next);
+//          }
+//        }
+//      }
+//    }
+    Autoplayer autoplayer = game.getAutoplayer();
+    Location next = autoplayer.nextMove(this.getLocation(), game);
+    Location.CompassDirection compassDir = getLocation().get4CompassDirectionTo(next);
     setDirection(compassDir);
-    if (!isVisited(next) && canMove(next)) {
-      setLocation(next);
-    } else {
-      // normal movement
-      int sign = randomiser.nextDouble() < 0.5 ? 1 : -1;
-      setDirection(oldDirection);
-      turn(sign * 90);  // Try to turn left/right
-      next = getNextMoveLocation();
-      if (canMove(next)) {
-        setLocation(next);
-      } else {
-        setDirection(oldDirection);
-        next = getNextMoveLocation();
-        if (canMove(next)) // Try to move forward
-        {
-          setLocation(next);
-        } else {
-          setDirection(oldDirection);
-          turn(-sign * 90);  // Try to turn right/left
-          next = getNextMoveLocation();
-          if (canMove(next)) {
-            setLocation(next);
-          } else {
-            setDirection(oldDirection);
-            turn(180);  // Turn backward
-            next = getNextMoveLocation();
-            setLocation(next);
-          }
-        }
-      }
-    }
+    setLocation(next);
     eatPill(next);
     addVisitedList(next);
+    System.out.println("next: " + next);
   }
 
   private void addVisitedList(Location location)
@@ -212,6 +218,7 @@ public class PacActor extends Actor implements GGKeyRepeatListener
       nbPills++;
       score++;
       getBackground().fillCell(location, Color.lightGray);
+      game.removePill(location);
       game.getGameCallback().pacManEatPillsAndItems(location, "pills");
     } else if (c.equals(Color.yellow)) {
       nbPills++;
@@ -223,13 +230,13 @@ public class PacActor extends Actor implements GGKeyRepeatListener
       getBackground().fillCell(location, Color.lightGray);
       game.getGameCallback().pacManEatPillsAndItems(location, "ice");
       game.removeItem("ice",location);
-    } else if (c.equals(Color.red)){
+    } else if (c.equals(Color.red) && !isAuto){
       setLocation(game.getPortalLocations("white", getLocation()));
-    } else if (c.equals(Color.orange)){
+    } else if (c.equals(Color.orange) && !isAuto){
       setLocation(game.getPortalLocations("yellow", getLocation()));
-    } else if (c.equals(Color.pink)){
+    } else if (c.equals(Color.pink) && !isAuto){
       setLocation(game.getPortalLocations("darkGold", getLocation()));
-    } else if (c.equals(Color.darkGray)) {
+    } else if (c.equals(Color.darkGray) && !isAuto) {
       setLocation(game.getPortalLocations("darkGray", getLocation()));
     }
     String title = "[PacMan in the Multiverse] Current score: " + score;

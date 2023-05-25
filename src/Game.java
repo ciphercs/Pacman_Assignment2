@@ -5,7 +5,6 @@ package src;
 import ch.aplu.jgamegrid.*;
 import src.utility.GameCallback;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -19,9 +18,10 @@ public class Game extends GameGrid
   protected src.PacActor pacActor = new src.PacActor(this);
   private src.Monster troll = new src.Monster(this, src.MonsterType.Troll);
   private src.Monster tx5 = new src.Monster(this, src.MonsterType.TX5);
-
+  private Autoplayer autoplayer = new Autoplayer();
 
   private ArrayList<Location> pillAndItemLocations = new ArrayList<Location>();
+  private ArrayList<Location> currentPillAndGoldLocations = new ArrayList();
   private ArrayList<Actor> iceCubes = new ArrayList<Actor>();
   private ArrayList<Actor> goldPieces = new ArrayList<Actor>();
   private GameCallback gameCallback;
@@ -197,6 +197,10 @@ public class Game extends GameGrid
     return pillAndItemLocations;
   }
 
+  public ArrayList<Location> getCurrentPillAndGoldLocations() {
+    return currentPillAndGoldLocations;
+  }
+
   public Location getPortalLocations(String portal, Location location) {
     Location exit = new Location();
     switch(portal){
@@ -255,9 +259,11 @@ public class Game extends GameGrid
         int a = grid.getCell(location);
         if (a == 1 && propertyPillLocations.size() == 0) {
           pillAndItemLocations.add(location);
+          currentPillAndGoldLocations.add(location);
         }
         if (a == 3 &&  propertyGoldLocations.size() == 0) {
           pillAndItemLocations.add(location);
+          currentPillAndGoldLocations.add(location);
         }
         if (a == 4) {
           pillAndItemLocations.add(location);
@@ -281,11 +287,13 @@ public class Game extends GameGrid
     if (propertyPillLocations.size() > 0) {
       for (Location location : propertyPillLocations) {
         pillAndItemLocations.add(location);
+        currentPillAndGoldLocations.add(location);
       }
     }
     if (propertyGoldLocations.size() > 0) {
       for (Location location : propertyGoldLocations) {
         pillAndItemLocations.add(location);
+        currentPillAndGoldLocations.add(location);
       }
     }
   }
@@ -355,15 +363,25 @@ public class Game extends GameGrid
       for (Actor item : this.goldPieces){
         if (location.getX() == item.getLocation().getX() && location.getY() == item.getLocation().getY()) {
           item.hide();
+          this.currentPillAndGoldLocations.remove(location);
         }
       }
     }else if(type.equals("ice")){
       for (Actor item : this.iceCubes){
         if (location.getX() == item.getLocation().getX() && location.getY() == item.getLocation().getY()) {
           item.hide();
+          this.currentPillAndGoldLocations.remove(location);
         }
       }
     }
+  }
+
+  public void removePill(Location location) {
+    this.currentPillAndGoldLocations.remove(location);
+  }
+
+  public PacManGameGrid getGrid() {
+    return grid;
   }
 
   public int getNumHorzCells(){
@@ -371,5 +389,9 @@ public class Game extends GameGrid
   }
   public int getNumVertCells(){
     return this.nbVertCells;
+  }
+
+  public Autoplayer getAutoplayer() {
+    return autoplayer;
   }
 }

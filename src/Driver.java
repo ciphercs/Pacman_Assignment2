@@ -31,7 +31,7 @@ public class Driver {
                 } else {
                     File[] maps = map.listFiles();
                     Controller player = new Controller();
-                    player.openFile(maps[0]);
+                    player.openFile(maps[maps.length - 1]);
                     player.playGame(player.getMapString());
                 }
             } else {

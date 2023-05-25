@@ -1,1 +1,112 @@
-Game invalidNaming_duplicateNumber - multiple maps at the same level: 1map; 1mapz
+[PacMan] Location: 1-1. Eat Pill/Item: pills
+[PacMan] Location: 1-1. Score: 1. Pills: 1
+[Troll] Location: 18-5
+[PacMan] Location: 1-1. Eat Pill/Item: pills
+[PacMan] Location: 2-1. Score: 2. Pills: 2
+[Troll] Location: 18-6
+[PacMan] Location: 1-1. Eat Pill/Item: pills
+[PacMan] Location: 3-1. Score: 3. Pills: 3
+[Troll] Location: 18-5
+[PacMan] Location: 4-3. Score: 3. Pills: 3
+[Troll] Location: 18-6
+[PacMan] Location: 4-4. Score: 3. Pills: 3
+[Troll] Location: 18-5
+[PacMan] Location: 4-5. Score: 3. Pills: 3
+[Troll] Location: 18-6
+[PacMan] Location: 6-6. Eat Pill/Item: pills
+[PacMan] Location: 4-6. Score: 4. Pills: 4
+[Troll] Location: 18-5
+[PacMan] Location: 7-7. Eat Pill/Item: pills
+[PacMan] Location: 4-7. Score: 5. Pills: 5
+[Troll] Location: 18-6
+[PacMan] Location: 8-8. Eat Pill/Item: pills
+[PacMan] Location: 4-8. Score: 6. Pills: 6
+[Troll] Location: 18-5
+[PacMan] Location: 9-9. Eat Pill/Item: gold
+[PacMan] Location: 4-9. Score: 11. Pills: 7
+[Troll] Location: 18-6
+[PacMan] Location: 10-10. Eat Pill/Item: gold
+[PacMan] Location: 4-10. Score: 16. Pills: 8
+[Troll] Location: 18-5
+[PacMan] Location: 5-10. Score: 16. Pills: 8
+[Troll] Location: 18-6
+[PacMan] Location: 6-10. Score: 16. Pills: 8
+[Troll] Location: 18-5
+[PacMan] Location: 7-10. Score: 16. Pills: 8
+[Troll] Location: 18-6
+[PacMan] Location: 8-10. Score: 16. Pills: 8
+[Troll] Location: 18-5
+[PacMan] Location: 9-10. Score: 16. Pills: 8
+[Troll] Location: 18-6
+[PacMan] Location: 10-10. Score: 16. Pills: 8
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+[PacMan] Location: 10-10. Eat Pill/Item: gold
+[PacMan] Location: 11-10. Score: 21. Pills: 9
+[TX5] Location: 18-5
+[Troll] Location: 18-6
+[PacMan] Location: 11-9. Score: 21. Pills: 9
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+[PacMan] Location: 11-8. Score: 21. Pills: 9
+[TX5] Location: 18-5
+[Troll] Location: 18-6
+[PacMan] Location: 11-7. Score: 21. Pills: 9
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+[PacMan] Location: 11-6. Score: 21. Pills: 9
+[TX5] Location: 18-5
+[Troll] Location: 18-6
+[PacMan] Location: 11-5. Score: 21. Pills: 9
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+[PacMan] Location: 11-4. Score: 21. Pills: 9
+[TX5] Location: 18-5
+[Troll] Location: 18-6
+[PacMan] Location: 11-3. Score: 21. Pills: 9
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+[PacMan] Location: 10-3. Score: 21. Pills: 9
+[TX5] Location: 18-5
+[Troll] Location: 18-6
+[PacMan] Location: 9-3. Score: 21. Pills: 9
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+[PacMan] Location: 8-3. Score: 21. Pills: 9
+[TX5] Location: 18-5
+[Troll] Location: 18-6
+[PacMan] Location: 7-3. Score: 21. Pills: 9
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+[PacMan] Location: 6-3. Score: 21. Pills: 9
+[TX5] Location: 18-5
+[Troll] Location: 18-6
+[PacMan] Location: 5-3. Score: 21. Pills: 9
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+[PacMan] Location: 4-1. Score: 21. Pills: 9
+[TX5] Location: 18-5
+[Troll] Location: 18-6
+[PacMan] Location: 5-1. Score: 21. Pills: 9
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+[PacMan] Location: 6-1. Score: 21. Pills: 9
+[TX5] Location: 18-5
+[Troll] Location: 18-6
+[PacMan] Location: 7-1. Score: 21. Pills: 9
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+[PacMan] Location: 8-1. Score: 21. Pills: 9
+[TX5] Location: 18-5
+[Troll] Location: 18-6
+[PacMan] Location: 9-1. Score: 21. Pills: 9
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+[PacMan] Location: 10-1. Score: 21. Pills: 9
+[TX5] Location: 18-5
+[Troll] Location: 18-6
+[PacMan] Location: 1-1. Eat Pill/Item: pills
+[PacMan] Location: 11-1. Score: 22. Pills: 10
+[TX5] Location: 18-6
+[Troll] Location: 18-5
+YOU WIN
