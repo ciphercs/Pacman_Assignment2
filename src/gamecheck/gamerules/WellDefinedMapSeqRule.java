@@ -3,9 +3,11 @@ package gamecheck.gamerules;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class WellDefinedMapSeqRule extends GameRule {
     private ArrayList<Integer> firstChars;
+    private HashMap<String, Integer> filenameToNum = new HashMap<>();
 
     public WellDefinedMapSeqRule(File directory) {
         super(directory);
@@ -43,15 +45,24 @@ public class WellDefinedMapSeqRule extends GameRule {
     private ArrayList<Integer> getFirstChars() {
         ArrayList<Integer> arr = new ArrayList<>();
         for (String filename : fileNames) {
-            arr.add(Integer.parseInt(String.valueOf(filename.charAt(0))));
+            String num = "";
+            for (Character c : filename.toCharArray()) {
+                if (Character.isDigit(c)) {
+                    num += c;
+                } else {
+                    break;
+                }
+            }
+            arr.add(Integer.parseInt(num));
+            this.filenameToNum.put(filename, Integer.parseInt(num));
         }
         return arr;
     }
 
-    private ArrayList<String> getInvalidFiles(int chr) {
+    private ArrayList<String> getInvalidFiles(int num) {
         ArrayList<String> invalidMaps = new ArrayList<>();
         for (String filename : fileNames) {
-            if (filename.charAt(0) == Character.forDigit(chr,10)) {
+            if (this.filenameToNum.get(filename) == num) {
                 invalidMaps.add(filename);
             }
         }
