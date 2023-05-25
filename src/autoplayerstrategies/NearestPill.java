@@ -38,7 +38,6 @@ public class NearestPill implements MovementStrategy {
     public ArrayList<Location> moveSequence() {
         Location to = closestPillLocationTo(this.currentLocation);
         ArrayList<Location> path = getPath(currentLocation, to);
-        System.out.println("path: " + path);
         return path;
     }
 
@@ -46,7 +45,6 @@ public class NearestPill implements MovementStrategy {
     // uses Dijkstra's algorithm
     // mimics pseudocode at https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
     private ArrayList<Location> getPath(Location from, Location to) {
-        System.out.println("from: " + from + ", to: " + to);
         ArrayList<Location> S = new ArrayList<>();
         int dist[][] = new int[nbVert][nbHorz];
         Location prev[][] = new Location[nbVert][nbHorz];
@@ -76,7 +74,6 @@ public class NearestPill implements MovementStrategy {
             }
             queue.remove(u);
             ArrayList<Location> neighboursInQueue = getNeighboursInQueue(queue, u);
-            System.out.println("neighboursInQueue: " + neighboursInQueue);
             for (Location v : neighboursInQueue) {
                 int alt = dist[u.getY()][u.getX()] + 1;
                 if (alt < get(dist, v)) {
@@ -120,7 +117,6 @@ public class NearestPill implements MovementStrategy {
             int a = grid.getCell(adjLocation);
             if (a == 5) { // white portal
                 Location newLoc = game.getPortalLocations("white", adjLocation);
-                System.out.println("newLoc: " + newLoc);
                 portalAdjacent.add(newLoc);
             } else if (a == 6) {
                 Location newLoc = game.getPortalLocations("yellow", adjLocation);
@@ -180,7 +176,6 @@ public class NearestPill implements MovementStrategy {
 
     private ArrayList<Location> getNeighboursInQueue(ArrayList<Location> queue, Location loc) {
         ArrayList<Location> adjLocations = adjacentLocations(loc);
-        System.out.println("adjLocations: " + adjLocations + " adjacent to " + loc);
         ArrayList<Location> nhbInQueue = new ArrayList<>();
         for (Location l : adjLocations) {
             if (queue.contains(l) && adjLocations.contains(l)) {

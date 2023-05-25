@@ -178,7 +178,6 @@ public class PacActor extends Actor implements GGKeyRepeatListener
     setLocation(next);
     eatPill(next);
     addVisitedList(next);
-    System.out.println("next: " + next);
   }
 
   private void addVisitedList(Location location)
