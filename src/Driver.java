@@ -2,7 +2,9 @@ package src;
 
 import gamecheck.GameChecker;
 import matachi.mapeditor.editor.Controller;
-import gamecheck.*;
+import src.gamecheck.*;
+import src.levelcheck.LevelChecker;
+import src.utility.GameCallback;
 
 import java.io.File;
 import java.lang.reflect.Array;
@@ -13,6 +15,7 @@ public class Driver {
     /**
      * Starting point
      * @param args the command line arguments
+     *
      */
 
     public static void main(String args[]) {
@@ -22,6 +25,7 @@ public class Driver {
 ////        }
 ////        final Properties properties = PropertiesLoader.loadPropertiesFile(propertiesPath);
 ////        GameCallback gameCallback = new GameCallback();
+        src.utility.GameCallback logger = new GameCallback();
         if (args.length > 0){
             File map = new File(args[0]);
             if (map.isDirectory()){
@@ -36,8 +40,12 @@ public class Driver {
                 }
             } else {
                 //TODO levelCheck
-                Controller editor = new Controller();
-                editor.openFile(map);
+                LevelChecker levelChecker = new LevelChecker(map, logger);
+                if (!levelChecker.checkLevelRules()) {
+                    Controller editor = new Controller();
+                    editor.openFile(map);
+                }
+
             }
         } else {
             new Controller();
