@@ -25,12 +25,12 @@ public class StartPacLevelCheck extends LevelRule {
         for (String fileName : fileNames) {
             Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") + System.getProperty("file.separator") + fileName);
             if (data.get("pacTile") == null) {
-                String msg = "[" + fileName + " – no start for PacMan ]";
+                String msg = "[Level " + fileName + " – no start for PacMan ]";
                 this.errorMessage.add(msg);
                 result = false;
             }
             if(data.get("pacTile") != null && Integer.parseInt(data.get("pacCount").get(0)) > 1){
-                String msg = "[" + fileName + " – more than one start for Pacman: " + data.get("pacTile") + "]";
+                String msg = "[Level " + fileName + " – more than one start for Pacman: " + data.get("pacTile") + "]";
                 this.errorMessage.add(msg);
                 result = false;
             }

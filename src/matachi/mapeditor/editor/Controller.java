@@ -94,7 +94,7 @@ public class Controller implements ActionListener, GUIInformation {
 	public boolean playGame(String mapString){
 		view.close();
 		src.utility.GameCallback gameCallback = new src.utility.GameCallback();
-		Properties properties = src.utility.PropertiesLoader.loadPropertiesFile("properties/test1.properties");
+		Properties properties = src.utility.PropertiesLoader.loadPropertiesFile("properties/test.properties");
 		src.Game game = new src.Game(gameCallback, properties, mapString);
 		game.setVisible(false);
 		return game.getResult();

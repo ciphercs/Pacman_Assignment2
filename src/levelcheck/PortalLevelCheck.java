@@ -24,22 +24,22 @@ public class PortalLevelCheck extends LevelRule {
         for (String fileName : fileNames) {
             Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator")  + System.getProperty("file.separator")+ fileName);
 
-            if (data.get("portalWhiteTile") != null && Integer.parseInt(data.get("portalWhiteTileCount").get(0)) != 2) {
+            if (data.get("portalWhiteTile") != null && data.get("portalWhiteTileCount").size() != 2) {
                 String msg = "[Level " + fileName + " - portal White count is not 2:" + data.get("portalWhiteTile") + "]";
                 this.errorMessage.add(msg);
                 result = false;
             }
-            if (data.get("portalYellowTile") != null && Integer.parseInt(data.get("portalYellowTileCount").get(0)) != 2) {
+            if (data.get("portalYellowTile") != null && data.get("portalYellowTileCount").size() != 2) {
                 String msg = "[Level " + fileName + " - portal Yellow count is not 2:" + data.get("portalYellowTile") + "]";
                 this.errorMessage.add(msg);
                 result = false;
             }
-            if (data.get("portalDarkGoldTile") != null && Integer.parseInt(data.get("portalDarkGoldTileCount").get(0)) != 2) {
+            if (data.get("portalDarkGoldTile") != null && data.get("portalDarkGoldTileCount").size() != 2) {
                 String msg = "[Level " + fileName + " - portal Dark Gold count is not 2:" + data.get("portalDarkGoldTile") + "]";
                 this.errorMessage.add(msg);
                 result = false;
             }
-            if (data.get("portalDarkGrayTile") != null && Integer.parseInt(data.get("portalDarkGrayTileCount").get(0)) != 2) {
+            if (data.get("portalDarkGrayTile") != null && data.get("portalDarkGrayTileCount").size() != 2) {
                 String msg = "[Level " + fileName + " - portal Dark Gray count is not 2:" + data.get("portalDarkGrayTile") + "]";
                 this.errorMessage.add(msg);
                 result = false;
