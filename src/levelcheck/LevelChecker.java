@@ -14,6 +14,7 @@ public class LevelChecker {
     // return true if all level rules are satisfied
     public boolean checkLevelRules() {
         ArrayList<LevelRule> rules = new ArrayList<>();
+        boolean levelPassed = true;
 
         rules.add(new StartPacLevelCheck(directory));
         rules.add(new PortalLevelCheck(directory));
@@ -22,10 +23,10 @@ public class LevelChecker {
         for (LevelRule rule : rules) {
             if (!rule.checkRule()) {
                 this.generateLog(rule);
-                return false;
+                levelPassed = false;
             }
         }
-        return true;
+        return levelPassed;
     }
 
     private void generateLog(LevelRule rule) {
