@@ -11,6 +11,7 @@ import java.util.logging.Level;
 public class Driver {
 
     private static boolean stillAlive = true;
+    private static boolean errorMap = false;
 
     /**
      * Starting point
@@ -30,22 +31,19 @@ public class Driver {
                     File[] maps = map.listFiles();
                     Controller player = new Controller();
                     for (File i: maps) {
-                        LevelChecker levelChecker = new LevelChecker(i, logger);
-                        if (levelChecker.checkLevelRules()) {
-                            if (stillAlive) {
+                        if (stillAlive){
+                            LevelChecker levelChecker = new LevelChecker(i, logger);
+                            if (levelChecker.checkLevelRules()){
                                 player.openFile(i);
                                 stillAlive = player.playGame(player.getMapString());
                             } else {
-                                player.openEditor();
+                                player.openFile(i);
+                                errorMap = true;
                                 break;
                             }
-                        } else {
-                            stillAlive = false;
-                            player.openFile(i);
-                            break;
                         }
                     }
-                    if (stillAlive){
+                    if(!errorMap){
                         new Controller();
                     }
                 }
