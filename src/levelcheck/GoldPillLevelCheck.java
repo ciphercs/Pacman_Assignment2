@@ -24,8 +24,16 @@ public class GoldPillLevelCheck extends LevelRule {
         for (String fileName : fileNames) {
             Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") +  System.getProperty("file.separator")+ fileName);
 
-            int goldCount = data.get("goldTileCount") != null ?Integer.parseInt(data.get("goldTileCount").get(0)):0;
-            int pillCount = data.get("pillTileCount") != null ?Integer.parseInt(data.get("pillTileCount").get(0)):0;
+            int goldCount = 0;
+            int pillCount = 0;
+
+            if (data.containsKey("goldTileCount")){
+                goldCount = data.get("goldTileCount").size();
+            }
+
+            if (data.containsKey("pillTileCount")){
+                pillCount = data.get("pillTileCount").size();
+            }
 
             if (goldCount + pillCount < 2) {
                 String msg = "[Level " + fileName + " – less than 2 Gold and Pill]";
