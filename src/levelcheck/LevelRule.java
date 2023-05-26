@@ -14,7 +14,8 @@ public abstract class LevelRule {
 
     public LevelRule(File directory) {
         this.directory = directory;
-        this.maps = new ArrayList<>(Arrays.asList(Objects.requireNonNull(directory.listFiles())));
+        List<File> fileList = Arrays.stream(directory.listFiles()).filter(f -> f.isFile() && f.getName().endsWith(".xml")).toList();
+        this.maps = new ArrayList(Objects.requireNonNull(fileList));
         this.fileNames = this.getFileNames();
     }
 
@@ -28,6 +29,7 @@ public abstract class LevelRule {
     protected ArrayList<String> getFileNames() {
         ArrayList<String> fileNames = new ArrayList<>();
         for (File map : maps) {
+            if(map.getName().endsWith(".xml"))
             fileNames.add(map.getName());
         }
         return fileNames;
