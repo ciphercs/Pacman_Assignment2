@@ -1,4 +1,4 @@
-package src.utility;
+package utility;
 
 import org.jdom.Document;
 import org.jdom.Element;
@@ -244,7 +244,7 @@ public class DataExtractor {
                                 System.out.println("Invalid condition");
                         }
                     }
-                    System.out.println("Location" + locationMap);
+
                 }
 
         } catch (Exception e) {
