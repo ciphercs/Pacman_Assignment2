@@ -1,8 +1,8 @@
 package src;
 
 import gamecheck.GameChecker;
+import levelcheck.LevelChecker;
 import matachi.mapeditor.editor.Controller;
-import src.levelcheck.LevelChecker;
 import src.utility.GameCallback;
 
 import java.io.File;

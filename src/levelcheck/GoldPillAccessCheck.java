@@ -1,4 +1,4 @@
-package src.levelcheck;
+package levelcheck;
 
 import src.utility.Location;
 import src.utility.DataExtractor;
@@ -13,7 +13,7 @@ import java.util.Map;
  * in such a way, if pill or gold is blocked it logs the error message.
  */
 
-public class GoldPillAccessCheck extends LevelRule {
+public class GoldPillAccessCheck extends levelcheck.LevelRule {
     private String resourceDir;
     public GoldPillAccessCheck(File directory) {
         super(directory);

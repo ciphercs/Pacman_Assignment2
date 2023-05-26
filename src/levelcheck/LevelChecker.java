@@ -1,4 +1,4 @@
-package src.levelcheck;
+package levelcheck;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class LevelChecker {
         this.logger = logger;
     }
 
-    // return true if all game rules are satisfied
+    // return true if all level rules are satisfied
     public boolean checkLevelRules() {
         ArrayList<LevelRule> rules = new ArrayList<>();
 

@@ -1,4 +1,4 @@
-package src.levelcheck;
+package levelcheck;
 import src.utility.DataExtractor;
 import java.io.File;
 import java.util.List;
