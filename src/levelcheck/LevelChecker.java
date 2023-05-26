@@ -32,7 +32,6 @@ public class LevelChecker {
 
         for(String msg: rule.getErrorMessage()) {
             logger.writeString(msg);
-            System.out.println(msg);
         }
     }
 }

@@ -111,6 +111,14 @@ public class Game extends GameGrid
     return gameCallback;
   }
 
+  public boolean getResult(){
+    if (getBg().getPaintColor().equals(Color.red)){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   public void setupActorLocations(String mapString) {
     String[] trollLocations = properties.getProperty("Troll.location").split(",");
     String[] tx5Locations = properties.getProperty("TX5.location").split(",");

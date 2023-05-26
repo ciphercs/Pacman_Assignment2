@@ -24,8 +24,6 @@ public class StartPacLevelCheck extends LevelRule {
         boolean result = true;
         for (String fileName : fileNames) {
             Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") + resourceDir + System.getProperty("file.separator")+ fileName);
-            System.out.println(System.getProperty("user.dir") + System.getProperty("file.separator") + fileName);
-            System.out.println("data in pacman check: " + data);
             if (data.get("pacTile") == null) {
                 String msg = "[" + fileName + " – no start for PacMan ]";
                 this.errorMessage.add(msg);

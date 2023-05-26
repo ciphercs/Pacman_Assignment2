@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -90,11 +91,17 @@ public class Controller implements ActionListener, GUIInformation {
 		}
 	}
 
-	public void playGame(String mapString){
+	public boolean playGame(String mapString){
 		view.close();
 		src.utility.GameCallback gameCallback = new src.utility.GameCallback();
-		final Properties properties = src.utility.PropertiesLoader.loadPropertiesFile("properties/test1.properties");
-		new src.Game(gameCallback, properties, mapString);
+		Properties properties = src.utility.PropertiesLoader.loadPropertiesFile("properties/test1.properties");
+		src.Game game = new src.Game(gameCallback, properties, mapString);
+		game.setVisible(false);
+		return game.getResult();
+	}
+
+	public void openEditor(){
+		view.show();
 	}
 
 	public void updateGrid(int width, int height) {

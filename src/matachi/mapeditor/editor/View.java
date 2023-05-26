@@ -169,6 +169,8 @@ public class View {
 		frame.setVisible(false);
 	}
 
+	public void show() {frame.setVisible(true);}
+
 	// /**
 	// * Flip the grid on or off.
 	// */

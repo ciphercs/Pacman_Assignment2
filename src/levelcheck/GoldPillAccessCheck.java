@@ -26,7 +26,6 @@ public class GoldPillAccessCheck extends LevelRule {
         boolean result = true;
         for (String fileName : fileNames) {
             Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") + resourceDir + System.getProperty("file.separator")+ fileName);
-            System.out.println("Data: " + data);
             List<String> pillLocation = data.get("pillTile");
             List<String> wallLocation = data.get("wallTile");
             // Converting pill string location into list of location objects and sorting it.

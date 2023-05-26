@@ -2,15 +2,14 @@ package src;
 
 import gamecheck.GameChecker;
 import matachi.mapeditor.editor.Controller;
-import src.gamecheck.*;
 import src.levelcheck.LevelChecker;
 import src.utility.GameCallback;
 
 import java.io.File;
-import java.lang.reflect.Array;
 
 public class Driver {
-//    public static final String DEFAULT_PROPERTIES_PATH = "properties/test1.properties";
+
+    private static boolean stillAlive = true;
 
     /**
      * Starting point
@@ -19,12 +18,6 @@ public class Driver {
      */
 
     public static void main(String args[]) {
-//        String propertiesPath = DEFAULT_PROPERTIES_PATH;
-////        if (args.length > 0) {
-////            propertiesPath = args[0];
-////        }
-////        final Properties properties = PropertiesLoader.loadPropertiesFile(propertiesPath);
-////        GameCallback gameCallback = new GameCallback();
         src.utility.GameCallback logger = new GameCallback();
         if (args.length > 0){
             File map = new File(args[0]);
@@ -34,24 +27,36 @@ public class Driver {
                     new Controller();
                 } else {
                     File[] maps = map.listFiles();
-
                     Controller player = new Controller();
-                    //TODO levelCheck each map and play each map
-                    player.openFile(maps[maps.length - 1]);
-                    player.playGame(player.getMapString());
+                    LevelChecker levelChecker = new LevelChecker(map, logger);
+                    for (File i: maps){
+                        if (!levelChecker.checkLevelRules()) {
+                            if (stillAlive) {
+                                player.openFile(i);
+                                stillAlive = player.playGame(player.getMapString());
+                            } else {
+                                player.openEditor();
+                                break;
+                            }
+                        } else {
+                            stillAlive = false;
+                            player.openFile(i);
+                            break;
+                        }
+                    }
+                    if (stillAlive){
+                        new Controller();
+                    }
                 }
             } else {
-                //TODO levelCheck
                 LevelChecker levelChecker = new LevelChecker(map, logger);
                 if (!levelChecker.checkLevelRules()) {
                     Controller editor = new Controller();
                     editor.openFile(map);
                 }
-
             }
         } else {
             new Controller();
         }
-//        new pacgame.Game(gameCallback, properties);
     }
 }
