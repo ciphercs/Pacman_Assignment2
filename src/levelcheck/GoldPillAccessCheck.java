@@ -14,18 +14,18 @@ import java.util.Map;
  */
 
 public class GoldPillAccessCheck extends levelcheck.LevelRule {
-    private String resourceDir;
+    //private String resourceDir;
     public GoldPillAccessCheck(File directory) {
         super(directory);
-        String dirPath = directory.toString();
-        resourceDir = dirPath.substring(dirPath.lastIndexOf(System.getProperty("file.separator")) + 1, dirPath.length());
+        //String dirPath = directory.toString();
+        //resourceDir = dirPath.substring(dirPath.lastIndexOf(System.getProperty("file.separator")) + 1, dirPath.length());
     }
 
     @Override
     public boolean checkRule() {
         boolean result = true;
         for (String fileName : fileNames) {
-            Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") + resourceDir + System.getProperty("file.separator")+ fileName);
+            Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") +  System.getProperty("file.separator")+ fileName);
             List<String> pillLocation = data.get("pillTile");
             List<String> wallLocation = data.get("wallTile");
             // Converting pill string location into list of location objects and sorting it.

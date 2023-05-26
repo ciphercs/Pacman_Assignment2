@@ -11,18 +11,18 @@ import java.util.Map;
  */
 
 public class GoldPillLevelCheck extends LevelRule {
-    private String resourceDir;
+    //private String resourceDir;
     public GoldPillLevelCheck(File directory) {
         super(directory);
-        String dirPath = directory.toString();
-        resourceDir = dirPath.substring(dirPath.lastIndexOf(System.getProperty("file.separator")) + 1, dirPath.length());
+        //String dirPath = directory.toString();
+        //resourceDir = dirPath.substring(dirPath.lastIndexOf(System.getProperty("file.separator")) + 1, dirPath.length());
     }
 
     @Override
     public boolean checkRule() {
         boolean result = true;
         for (String fileName : fileNames) {
-            Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") + resourceDir + System.getProperty("file.separator")+ fileName);
+            Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") +  System.getProperty("file.separator")+ fileName);
 
             int goldCount = data.get("goldTileCount") != null ?Integer.parseInt(data.get("goldTileCount").get(0)):0;
             int pillCount = data.get("pillTileCount") != null ?Integer.parseInt(data.get("pillTileCount").get(0)):0;

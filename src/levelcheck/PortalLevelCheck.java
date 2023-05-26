@@ -11,18 +11,18 @@ import java.util.Map;
  */
 
 public class PortalLevelCheck extends LevelRule {
-    private String resourceDir;
+    //private String resourceDir;
     public PortalLevelCheck(File directory) {
         super(directory);
-        String dirPath = directory.toString();
-        resourceDir = dirPath.substring(dirPath.lastIndexOf(System.getProperty("file.separator")) + 1, dirPath.length());
+        //String dirPath = directory.toString();
+        //resourceDir = dirPath.substring(dirPath.lastIndexOf(System.getProperty("file.separator")) + 1, dirPath.length());
     }
 
     @Override
     public boolean checkRule() {
         boolean result = true;
         for (String fileName : fileNames) {
-            Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") + resourceDir + System.getProperty("file.separator")+ fileName);
+            Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator")  + System.getProperty("file.separator")+ fileName);
 
             if (data.get("portalWhiteTile") != null && Integer.parseInt(data.get("portalWhiteTileCount").get(0)) != 2) {
                 String msg = "[Level " + fileName + " - portal White count is not 2:" + data.get("portalWhiteTile") + "]";

@@ -12,18 +12,18 @@ import src.utility.DataExtractor;
  */
 
 public class StartPacLevelCheck extends LevelRule {
-    private String resourceDir;
+    //private String resourceDir;
     public StartPacLevelCheck(File directory) {
         super(directory);
-        String dirPath = directory.toString();
-        resourceDir = dirPath.substring(dirPath.lastIndexOf(System.getProperty("file.separator")) + 1, dirPath.length());
+        //String dirPath = directory.toString();
+        //resourceDir = dirPath.substring(dirPath.lastIndexOf(System.getProperty("file.separator")) + 1, dirPath.length());
     }
 
     @Override
     public boolean checkRule() {
         boolean result = true;
         for (String fileName : fileNames) {
-            Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") + resourceDir + System.getProperty("file.separator")+ fileName);
+            Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") + System.getProperty("file.separator") + fileName);
             if (data.get("pacTile") == null) {
                 String msg = "[" + fileName + " – no start for PacMan ]";
                 this.errorMessage.add(msg);
