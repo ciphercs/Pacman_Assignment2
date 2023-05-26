@@ -6,6 +6,7 @@ import matachi.mapeditor.editor.Controller;
 import src.utility.GameCallback;
 
 import java.io.File;
+import java.util.logging.Level;
 
 public class Driver {
 
@@ -23,15 +24,14 @@ public class Driver {
             File map = new File(args[0]);
             if (map.isDirectory()){
                 GameChecker gameChecker = new GameChecker(map);
-                LevelChecker levelChecker = new LevelChecker(map, logger);
-                if (!gameChecker.checkGameRules() && !levelChecker.checkLevelRules()) {
+                if (!gameChecker.checkGameRules()) {
                     new Controller();
                 } else {
                     File[] maps = map.listFiles();
                     Controller player = new Controller();
                     for (File i: maps) {
-                        if(i.getName().endsWith(".xml")){
-                        if (!levelChecker.checkLevelRules()) {
+                        LevelChecker levelChecker = new LevelChecker(i, logger);
+                        if (levelChecker.checkLevelRules()) {
                             if (stillAlive) {
                                 player.openFile(i);
                                 stillAlive = player.playGame(player.getMapString());
@@ -45,20 +45,15 @@ public class Driver {
                             break;
                         }
                     }
-                    }
                     if (stillAlive){
                         new Controller();
                     }
                 }
             } else {
-                /*
                 LevelChecker levelChecker = new LevelChecker(map, logger);
-                if (!levelChecker.checkLevelRules()) {
-                    Controller editor = new Controller();
-                    editor.openFile(map);
-                }
-
-                 */
+                levelChecker.checkLevelRules();
+                Controller editor = new Controller();
+                editor.openFile(map);
             }
         } else {
             new Controller();

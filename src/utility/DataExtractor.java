@@ -29,17 +29,16 @@ public class DataExtractor {
      * @return Map with key as for eg. pacTile and value as list of Location data
      *
      */
-    public static Map<String,List<String>> getData(String fileWithDir) {
+    public static Map<String,List<String>> getData(File fileWithDir) {
         SAXBuilder builder = new SAXBuilder();
         Map<String,List<String>> locationMap = new LinkedHashMap<>();
         try {
             BufferedReader in;
             FileReader reader = null;
-            File currentFile = new File(fileWithDir);
 
             Document document;
-                if (currentFile.canRead() && currentFile.exists()) {
-                    document = (Document) builder.build(currentFile);
+                if (fileWithDir.canRead() && fileWithDir.exists()) {
+                    document = (Document) builder.build(fileWithDir);
 
                     Element rootNode = document.getRootElement();
 

@@ -12,28 +12,23 @@ import src.utility.DataExtractor;
  */
 
 public class StartPacLevelCheck extends LevelRule {
-    //private String resourceDir;
     public StartPacLevelCheck(File directory) {
         super(directory);
-        //String dirPath = directory.toString();
-        //resourceDir = dirPath.substring(dirPath.lastIndexOf(System.getProperty("file.separator")) + 1, dirPath.length());
     }
 
     @Override
     public boolean checkRule() {
         boolean result = true;
-        for (String fileName : fileNames) {
-            Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") + System.getProperty("file.separator") + fileName);
-            if (data.get("pacTile") == null) {
-                String msg = "[Level " + fileName + " – no start for PacMan ]";
-                this.errorMessage.add(msg);
-                result = false;
-            }
-            if(data.get("pacTile") != null && Integer.parseInt(data.get("pacCount").get(0)) > 1){
-                String msg = "[Level " + fileName + " – more than one start for Pacman: " + data.get("pacTile") + "]";
-                this.errorMessage.add(msg);
-                result = false;
-            }
+        Map<String, List<String>> data = DataExtractor.getData(directory);
+        if (data.get("pacTile") == null) {
+            String msg = "[Level " + directory.toString() + " – no start for PacMan ]";
+            this.errorMessage.add(msg);
+            result = false;
+        }
+        if(data.get("pacTile") != null && Integer.parseInt(data.get("pacCount").get(0)) > 1){
+            String msg = "[Level " + directory.toString() + " – more than one start for Pacman: " + data.get("pacTile") + "]";
+            this.errorMessage.add(msg);
+            result = false;
         }
         return result;
     }

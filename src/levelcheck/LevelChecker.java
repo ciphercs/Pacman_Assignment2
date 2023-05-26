@@ -22,7 +22,7 @@ public class LevelChecker {
         for (LevelRule rule : rules) {
             if (!rule.checkRule()) {
                 this.generateLog(rule);
-                //return false;
+                return false;
             }
         }
         return true;

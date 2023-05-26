@@ -14,41 +14,37 @@ import java.util.Map;
  */
 
 public class GoldPillAccessCheck extends levelcheck.LevelRule {
-    //private String resourceDir;
+
     public GoldPillAccessCheck(File directory) {
         super(directory);
-        //String dirPath = directory.toString();
-        //resourceDir = dirPath.substring(dirPath.lastIndexOf(System.getProperty("file.separator")) + 1, dirPath.length());
     }
 
     @Override
     public boolean checkRule() {
         boolean result = true;
-        for (String fileName : fileNames) {
-            Map<String, List<String>> data = DataExtractor.getData(System.getProperty("user.dir") + System.getProperty("file.separator") +  System.getProperty("file.separator")+ fileName);
-            List<String> pillLocation = data.get("pillTile");
-            List<String> wallLocation = data.get("wallTile");
-            // Converting pill string location into list of location objects and sorting it.
-            List<Location> sortedPills = pillLocation.stream().map(s->{
-                String[] temp = s.split(",");
-                Location loc = new Location (Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
-                return loc;
-            }).toList().stream().sorted(Comparator.comparingInt(Location::getY)).toList();
+        Map<String, List<String>> data = DataExtractor.getData(directory);
+        List<String> pillLocation = data.get("pillTile");
+        List<String> wallLocation = data.get("wallTile");
+        // Converting pill string location into list of location objects and sorting it.
+        List<Location> sortedPills = pillLocation.stream().map(s->{
+            String[] temp = s.split(",");
+            Location loc = new Location (Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
+            return loc;
+        }).toList().stream().sorted(Comparator.comparingInt(Location::getY)).toList();
 
-            // Converting wall string location into list of location objects and sorting it.
-            List<Location> sortedWalls = wallLocation.stream().map(s->{
-                String[] temp = s.split(",");
-                Location loc = new Location (Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
-                return loc;
-            }).toList().stream().sorted(Comparator.comparingInt(Location::getY)).toList();
-            // Iterating all pills.
-            for(Location pillLoc: sortedPills){
-                // Checking if pills are surrounded by walls or not.
-                if(isBlocked(pillLoc,sortedWalls)){
-                    String msg = "[Level " + fileName + " - Pill not accessible: (" + pillLoc.getX() + "," + pillLoc.getY() + ")]" ;
-                    this.errorMessage.add(msg);
-                    result = false;
-                }
+        // Converting wall string location into list of location objects and sorting it.
+        List<Location> sortedWalls = wallLocation.stream().map(s->{
+            String[] temp = s.split(",");
+            Location loc = new Location (Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
+            return loc;
+        }).toList().stream().sorted(Comparator.comparingInt(Location::getY)).toList();
+        // Iterating all pills.
+        for(Location pillLoc: sortedPills){
+            // Checking if pills are surrounded by walls or not.
+            if(isBlocked(pillLoc,sortedWalls)){
+                String msg = "[Level " + directory.toString() + " - Pill not accessible: (" + pillLoc.getX() + "," + pillLoc.getY() + ")]" ;
+                this.errorMessage.add(msg);
+                result = false;
             }
         }
         return result;
