@@ -73,6 +73,7 @@ public class Monster extends Actor
       !isVisited(next) && canMove(next))
     {
       setLocation(next);
+      usePortal(next);
     }
     else
     {
@@ -84,6 +85,7 @@ public class Monster extends Actor
       if (canMove(next))
       {
         setLocation(next);
+        usePortal(next);
       }
       else
       {
@@ -92,6 +94,7 @@ public class Monster extends Actor
         if (canMove(next)) // Try to move forward
         {
           setLocation(next);
+          usePortal(next);
         }
         else
         {
@@ -101,6 +104,7 @@ public class Monster extends Actor
           if (canMove(next))
           {
             setLocation(next);
+            usePortal(next);
           }
           else
           {
@@ -109,6 +113,7 @@ public class Monster extends Actor
             turn(180);  // Turn backward
             next = getNextMoveLocation();
             setLocation(next);
+            usePortal(next);
           }
         }
       }
@@ -145,4 +150,20 @@ public class Monster extends Actor
     else
       return true;
   }
+
+  private void usePortal(Location location)
+  {
+    Color c = getBackground().getColor(location);
+    if (c.equals(Color.red)){
+      setLocation(game.getPortalLocations("white", getLocation()));
+    } else if (c.equals(Color.orange)){
+      setLocation(game.getPortalLocations("yellow", getLocation()));
+    } else if (c.equals(Color.pink)){
+      setLocation(game.getPortalLocations("darkGold", getLocation()));
+    } else if (c.equals(Color.darkGray)) {
+      setLocation(game.getPortalLocations("darkGray", getLocation()));
+    }
+  }
 }
+
+
